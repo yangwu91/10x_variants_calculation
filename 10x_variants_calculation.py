@@ -79,10 +79,10 @@ if __name__ == '__main__':
 						
 	# Plotting using ggplot for Python
 	plotting_data=DataFrame({'pos':pos_list, 'heho':heho_list, 'del':del_list, 'ins':ins_list})
-	heho_p=ggplot(aes(x = 'pos', y = 'heho'), data= plotting_data) + geom_point() + ggtitle('heterozygous / (heterozygous + homozygous)') + scale_x_continuous('Position', breaks = [0, 1e+08, 2e+08, 3e+08], labels = ['0', '100Mb', '200Mb', '300Mb']) + xlim(low=0, high=3.7e8) + scale_y_continuous('Percent (%)', breaks = [25, 50, 75, 100]) + ylim(low=0, high=100)# + theme(axis.title.x = element_text())
+	heho_p=ggplot(aes(x = 'pos', y = 'heho'), data= plotting_data) + geom_point() + ggtitle('heterozygous / (heterozygous + homozygous)') + scale_x_continuous('Position', breaks = [0, 1e+08, 2e+08, 3e+08], labels = ['0', '100Mb', '200Mb', '300Mb']) + xlim(low=0, high=3.7e8) + scale_y_continuous('Percent (%)', breaks = [25, 50, 75, 100]) + ylim(low = 0, high = 100)# + theme(axis.title.x = element_text())
 	heho_p.save('heho_ratio_%s.png' % TD(window, 'readable'), dpi = 300)#, width = 8.43, height = 5.28, dpi = 300)#, limitsize = TRUE)
-	del_p=ggplot(aes(x = 'pos', y = 'del'), data= plotting_data) + geom_point() + ggtitle('Deletion') + ylab('Count') + scale_x_continuous('Position', breaks = [0, 1e+08, 2e+08, 3e+08], labels = ['0', '100Mb', '200Mb', '300Mb']) + xlim(low=0, high=3.7e8) + scale_y_continuous('Count') + ylim(low = 0)
+	del_p=ggplot(aes(x = 'pos', y = 'del'), data= plotting_data) + geom_point() + ggtitle('Deletion') + ylab('Count') + scale_x_continuous('Position', breaks = [0, 1e+08, 2e+08, 3e+08], labels = ['0', '100Mb', '200Mb', '300Mb']) + xlim(low = 0, high = 3.7e8) + scale_y_continuous('Count', breaks = [400, 800, 1200]) + ylim(low = 0)
 	del_p.save('del_stat_%s.png' % TD(window, 'readable'), dpi = 300)#, width = 8.43, height = 5.28, dpi = 300)#, limitsize = TRUE)
-	ins_p=ggplot(aes(x = 'pos', y = 'ins'), data= plotting_data) + geom_point() + ggtitle('Insertion') + ylab('Count') + scale_x_continuous('Position', breaks = [0, 1e+08, 2e+08, 3e+08], labels = ['0', '100Mb', '200Mb', '300Mb']) + xlim(low=0, high=3.7e8) + scale_y_continuous('Count') + ylim(low = 0)
+	ins_p=ggplot(aes(x = 'pos', y = 'ins'), data= plotting_data) + geom_point() + ggtitle('Insertion') + ylab('Count') + scale_x_continuous('Position', breaks = [0, 1e+08, 2e+08, 3e+08], labels = ['0', '100Mb', '200Mb', '300Mb']) + xlim(low = 0, high = 3.7e8) + scale_y_continuous('Count', breaks = [400, 800, 1200]) + ylim(low = 0)
 	ins_p.save('ins_stat_%s.png' % TD(window, 'readable'), dpi = 300)#, width = 8.43, height = 5.28, dpi = 300)#, limitsize = TRUE)
 
